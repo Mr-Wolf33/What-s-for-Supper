@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's for Supper? 🥘</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>What's for Supper? 🥘</h1>
+
+        <section class="meal-manager">
+            
+            <div class="add-meal">
+                <input type="text" id="new-meal-input" placeholder="Add a new meal (e.g., Pizza)">
+                <button id="add-meal-btn">Add Meal</button>
+                
+            </div>
+            <button id="pick-meal-btn">Randomly Pick Meal!</button>
+            
+            <div id="result-area" class="hidden">
+                <p>The chosen meal is:</p>
+                <h3 id="chosen-meal"></h3>
+                <button id="confirm-meal-btn" class="confirm-btn">Confirm I'm Making This!</button>
+                <button id="cancel-pick-btn" class="cancel-btn">Pick Again</button>
+            </div>
+
+            <p id="picker-message" class="message"></p>
+            <h2>Your Meal List</h2>
+            <ul id="meal-list-ul">
+                </ul>
+        </section>
+
+        <hr>
+
+        <section class="meal-picker">
+            <h2>What's for Supper?</h2>
+        </section>
+
+        <hr>
+
+        <section class="history-display">
+            <h2>Last Eaten History (Weighting Debug)</h2>
+            <ul id="history-ul">
+                </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
