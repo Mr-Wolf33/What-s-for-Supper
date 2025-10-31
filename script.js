@@ -10,9 +10,13 @@ const cancelPickBtn = document.getElementById('cancel-pick-btn');
 const pickerMessage = document.getElementById('picker-message');
 const historyUl = document.getElementById('history-ul');
 
+// --- NEW Visitor Counter References ---
+const visitCountDisplay = document.getElementById('visit-count');
+
 // Local Storage Keys
 const MEAL_LIST_KEY = 'dinnerPicker_mealList';
 const HISTORY_KEY = 'dinnerPicker_history';
+const VISIT_COUNT_KEY = 'dinnerPicker_visits'; // NEW Key
 
 // Global state for the currently picked meal
 let currentPickedMeal = null;
@@ -52,6 +56,28 @@ function saveMeals(meals) {
  */
 function saveHistory(history) {
     localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+}
+
+// --- NEW Visitor Counter Logic ---
+
+/**
+ * Loads and increments the local visit count for the current user, 
+ * saving it back to localStorage and updating the display.
+ */
+function trackVisitorCount() {
+    // 1. Get the current count from local storage. Default to 0.
+    let count = parseInt(localStorage.getItem(VISIT_COUNT_KEY) || '0', 10);
+    
+    // 2. Increment the count for this visit.
+    count++;
+    
+    // 3. Save the new count back to local storage.
+    localStorage.setItem(VISIT_COUNT_KEY, count);
+    
+    // 4. Update the display in the DOM.
+    if (visitCountDisplay) {
+        visitCountDisplay.textContent = count;
+    }
 }
 
 // --- Meal List Rendering and Interaction ---
@@ -177,7 +203,6 @@ function pickWeightedMeal() {
     });
 
     // 2. Create the Weighted Selection Array
-    // e.g., if "Pizza" has weight 10, it's added 10 times.
     const weightedList = [];
     mealWeights.forEach(item => {
         for (let i = 0; i < item.weight; i++) {
@@ -270,4 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMealList(loadMeals()); 
     // Load and render history
     renderHistory(loadHistory());
+    
+    // NEW: Initialize the visitor tracker
+    trackVisitorCount(); 
 });
