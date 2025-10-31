@@ -149,3 +149,39 @@ button {
 .history-display {
     font-size: 0.8em;
 }
+/* --- Visitor Counter Styling --- */
+
+/* Style for the container holding the local visitor count */
+.counter-display {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-top: 1px dashed #ccc;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* Style for the actual visit count number */
+#visit-count {
+    font-weight: bold;
+    color: var(--secondary-color); /* Green color from the app */
+    font-size: 1.5em;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+/* Style for the public counter section (if you used Option 2 in the footer) */
+.public-counter {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.public-counter p {
+    margin: 5px 0;
+}
